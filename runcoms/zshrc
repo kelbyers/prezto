@@ -11,3 +11,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# customize fasd
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias v='f -e vim'       # quick opening files with vim
+
+# start charade to integrate with pageant
+if [[ -n "$(which keychain)" ]]; then
+    eval `keychain -Q --eval --quiet`
+fi
+
