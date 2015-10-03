@@ -26,3 +26,7 @@ if [[ -n "$(which keychain)" ]]; then
     eval `keychain -Q --eval --quiet`
 fi
 
+# change @#%! prezto defaults
+export EDITOR='vim'
+export VISUAL='vim'
+
