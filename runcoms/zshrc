@@ -27,7 +27,10 @@ if [[ "$(whence -w keychain)" != "keychain: none" ]]; then
 fi
 
 # use GNU coreutils from homebrew, if available
-[[ -e /usr/local/bin/brew ]] && [[ -d $(brew --prefix coreutils)/libexec/gnubin ]] && path=($(brew --prefix coreutils)/libexec/gnubin $path)
+if [[ -e /usr/local/bin/brew ]]; then
+    [[ -d $(brew --prefix coreutils)/libexec/gnubin ]] && path=($(brew --prefix coreutils)/libexec/gnubin $path)
+    [[ -f ~/.profile.d/brew.sh ]] && source ~/.profile.d/brew.sh
+fi
 
 # change @#%! prezto defaults
 export EDITOR='vim'
