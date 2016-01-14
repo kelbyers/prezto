@@ -34,7 +34,7 @@ fi
 #
 
 # Remove Git for Windows on Cygwin
-if [[ $(uname -o) = "Cygwin" ]]; then
+if [[ "$OSTYPE" != darwin* ]] && [[ $(uname -o) = "Cygwin" ]]; then
     path=( ${(@)path:#*/Git/*} )
 fi
 

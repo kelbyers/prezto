@@ -37,10 +37,21 @@ _PMOD=(
   'fasd' \
   'archive' \
   'git' \
-  'screen' \
+  'ruby'
+  'python'
+  'screen'
+)
+if [[ $(uname -s) = 'Darwin' ]] ; then
+    _PMOD+=(
+      'homebrew'
+      'osx'
+    )
+elif [[ $(uname -o) = 'Cygwin' ]] ; then
+    _PMOD[$_PMOD[(i)syntax-highlighting]]=()
+fi
+_PMOD+=(
   'prompt'
 )
-[[ $(uname -o) = 'Cygwin' ]] && _PMOD[$_PMOD[(i)syntax-highlighting]]=()
 zstyle ':prezto:load' pmodule ${_PMOD[@]}
 unset _PMOD
 
