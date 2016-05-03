@@ -32,10 +32,22 @@ if [[ -e /usr/local/bin/brew ]]; then
     [[ -f ~/.profile.d/brew.sh ]] && source ~/.profile.d/brew.sh
 fi
 
+# load some files from ~/.profile.d
+for _PFSCRIPT in $(/usr/bin/find -L $HOME/.profile.d -type f -iname '*.sh' -or -iname '*.zsh' | LC_ALL=C sort); do
+    [[ $_PFSCRIPT = *gflow.sh || $_PFSCRIPT = *multissh.sh ]] && continue
+    source $_PFSCRIPT
+done
+unset _PFSCRIPT
+
 # change @#%! prezto defaults
 export EDITOR='vim'
 export VISUAL='vim'
 export LESS='-F -g -i -R -W -X'
+
+# easily open new tabs in mvim from CLI
+if [[ "$(whence -w mvim)" = "mvim: command" ]]; then
+    alias tvim='mvim -p --remote-tab-silent'
+fi
 
 # make sure ~/bin in path
 path=($path ~/bin)
