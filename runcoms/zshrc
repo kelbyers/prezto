@@ -44,16 +44,6 @@ export EDITOR='vim'
 export VISUAL='vim'
 export LESS='-F -g -i -R -W -X'
 
-# easily open new tabs in mvim from CLI
-if [[ "$(whence -w mvim)" = "mvim: command" ]]; then
-    alias tvim='mvim -p --remote-tab-silent'
-fi
-
-# use noglob with pimscp
-if [[ "$(whence -w pimscp)" = "pimscp: command" ]]; then
-    alias pimscp='noglob pimscp'
-fi
-
 # enable zsh-navigation-tools
 if [[ -d /usr/local/share/zsh-navigation-tools ]]; then
     fpath+=( /usr/local/share/zsh-navigation-tools )
@@ -68,5 +58,15 @@ HELPDIR=/usr/local/share/zsh/help
 # make sure ~/bin in path
 path=($path ~/bin)
 typeset -U path
+
+# easily open new tabs in mvim from CLI
+if [[ "$(whence -w mvim)" = "mvim: command" ]]; then
+    alias tvim='mvim -p --remote-tab-silent'
+fi
+
+# use noglob with pimscp
+if [[ "$(whence -w pimscp)" = "pimscp: command" ]]; then
+    alias pimscp='noglob pimscp'
+fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
