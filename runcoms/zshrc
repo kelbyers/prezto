@@ -21,6 +21,9 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias v='f -e vim'       # quick opening files with vim
 
+# allow interactive comments
+setopt INTERACTIVE_COMMENTS
+
 # start charade to integrate with pageant
 if [[ "$(whence -w keychain)" != "keychain: none" ]]; then
     eval `keychain -Q --eval --quiet`
